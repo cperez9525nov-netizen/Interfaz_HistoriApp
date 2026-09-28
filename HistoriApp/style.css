@@ -103,3 +103,17 @@
     color: #ffffff !important;
     transform: scale(1.2);
 }
+
+.imagen-fondo {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('grabadoIndex.jpg');
+  background-size: cover;
+  background-position: center;
+  
+  background-repeat: no-repeat;
+  z-index: -1;
+}
