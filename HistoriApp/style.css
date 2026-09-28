@@ -1,0 +1,105 @@
+.navbar {
+    background-color: #2f2f30 !important; 
+}
+
+/* Color gris claro para los enlaces principales */
+.navbar .nav-link {
+    color: #adb5bd !important;
+}
+
+/* color para el Hover o cuando el enlace está activo */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ffffff !important; /* Blanco al pasar el ratón */
+}
+
+/* Color para el título (HistoriApp) */
+.navbar .navbar-brand {
+    color: #f8f9fa !important;
+}
+
+.navbar-brand, .nav-link {
+    transition: transform 0.2s ease-in-out; 
+    cursor: pointer;
+}
+
+.navbar-brand, .nav-link:hover {
+    transform: scale(1.10);
+}
+
+/* Color para el texto del menú hamburguesa en móviles */
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Color del botón "Buscar" */
+.btn-outline-success {
+    color: #ffc107 !important;              
+    border-color: #ffc107 !important;       
+}
+
+/* Hover del botón "Buscar" */
+.btn-outline-success:hover {
+    color: #ffffff !important;              
+    background-color: #ffc107 !important;   
+    border-color: #ffc107 !important;
+}
+
+/* Imagen espadas animado */
+.espadas-animadas {
+    transition: transform 0.3s ease-in-out; 
+    cursor: pointer;
+}
+
+.espadas-animadas:hover {
+    transform: scale(1.50);
+}
+
+/* Menú acordeón batallas */
+
+/* Estilos para el Acordeón Oscuro */
+.accordion-button {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+/* Cambia la flecha por defecto a blanca */
+.accordion-button::after {
+    filter: invert(1);
+}
+
+/* Color cuando el elemento del acordeón está desplegado */
+.accordion-button:not(.collapsed) {
+    background-color: #2c3034 !important;
+    color: #ffc107 !important; /* Resalta el nombre de la batalla en dorado al desplegarse */
+}
+
+/* Enlace "Saber más..." */
+.btn-burdeos {
+    color: #adb5bd;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-burdeos:hover {
+    transform: scale(1.2);
+}
+
+/* Tooltip informativo de Batallas Clave */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+.letras-footer {
+    color: #adb5bd;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.letras-footer:hover,
+.letras-footer:focus {
+    color: #ffffff !important;
+    transform: scale(1.2);
+}

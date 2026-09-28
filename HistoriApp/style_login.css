@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+}
+.form-signin {
+    max-width: 380px;
+    padding: 1rem;
+}
+
+.texto-aviso1, .texto-aviso2, .texto-aviso3, .texto-aviso4, .texto-aviso5, .texto-aviso6 {
+    color: #adb5bd !important;
+}    
+
+/* Estilo para los divisores con texto */
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+.divider-text::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #495057; /* color border-secondary de Bootstrap */
+    z-index: 1;
+}
+.divider-text span {
+    position: relative;
+    background-color: #212529; /* color bg-dark */
+    padding: 0 0.75rem;
+    z-index: 2;
+}
