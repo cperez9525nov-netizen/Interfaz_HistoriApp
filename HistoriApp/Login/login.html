@@ -30,7 +30,7 @@
       </div>  
     </div>
   </div>
-  <div class="position-relative d-flex align-items-center justify-content-center vh-100 w-100 py-4" style="z-index: 2;">
+  <div class="position-relative d-flex align-items-center justify-content-center min-vh-100 w-100 py-5" style="z-index: 2;">
   <main class="form-signin w-100 m-auto" style="max-width: 540px;">
     <div class="card text-white border-secondary p-4 shadow-lg" style="background-color: rgba(33, 37, 41, 0.8) !important;">
       
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Botón Iniciar Sesión -->
-        <button class="btn btn-warning w-100 py-2 fw-bold mb-3" type="submit">
+        <button class="btn btn-outline-warning w-100 py-2 fw-bold mb-3" type="submit">
           Iniciar Sesión
         </button>
       </form>
@@ -103,11 +103,54 @@
       <div class="text-center mt-4 pt-2 border-top border-secondary">
         <p class="text-muted small mb-0 texto-aviso6">
           ¿No tienes una cuenta? 
-          <a href="#" class="text-warning fw-bold text-decoration-none ms-1">Regístrate gratis</a>
+          <a href="#seccionRegistro" class="text-warning fw-bold text-decoration-none ms-1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="seccionRegistro">Regístrate gratis</a>
         </p>
       </div>
 
     </div>
+
+    <div class="collapse" id="seccionRegistro">
+        <div class="card text-white border-secondary p-4 shadow-lg" style="background-color: rgba(33, 37, 41, 0.9) !important;">
+          
+          <div class="text-center mb-3">
+            <h2 class="h5 text-warning fw-bold">Crea tu cuenta</h2>
+            <p class="text-muted small">Completa los siguientes campos para registrarte</p>
+          </div>
+
+          <form>
+            <!-- Input Nombre -->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control bg-dark text-white border-secondary" id="regName" placeholder="Tu nombre" required>
+              <label for="regName" class="text-secondary">Nombre completo</label>
+            </div>
+
+            <!-- Input Correo -->
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control bg-dark text-white border-secondary" id="regEmail" placeholder="nombre@ejemplo.com" required>
+              <label for="regEmail" class="text-secondary">Correo electrónico</label>
+            </div>
+
+            <!-- Input Contraseña -->
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control bg-dark text-white border-secondary" id="regPassword" placeholder="Contraseña" required>
+              <label for="regPassword" class="text-secondary">Contraseña</label>
+            </div>
+
+            <!-- Input Repetir Contraseña -->
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control bg-dark text-white border-secondary" id="regPasswordConfirm" placeholder="Repetir Contraseña" required>
+              <label for="regPasswordConfirm" class="text-secondary">Repetir contraseña</label>
+            </div>
+
+            <!-- Botón de Registrarse -->
+            <button class="btn btn-outline-warning w-100 py-2 fw-bold" type="submit">
+              Registrarse
+            </button>
+          </form>
+
+        </div>
+      </div>
+
   </main>
   </div>
 
