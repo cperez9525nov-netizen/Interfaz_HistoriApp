@@ -117,3 +117,10 @@
   background-repeat: no-repeat;
   z-index: -1;
 }
+
+/* Cambiar el color del placeholder del footer */
+
+.placeholder-light::placeholder {
+  color: #adb5bd !important; /* Gris claro de la paleta de Bootstrap */
+  opacity: 1; /* Necesario para Firefox */
+}
