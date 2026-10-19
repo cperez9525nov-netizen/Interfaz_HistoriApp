@@ -1,0 +1,14 @@
+# Carpetas de compilación de Maven
+/target/
+/Jakarta/target/
+
+# Archivos de configuración del IDE (por si usas Eclipse, VS Code o IntelliJ)
+.settings/
+.project
+.classpath
+*.iml
+.idea/
+
+# Carpetas del sistema operativo
+.DS_Store
+Thumbs.db
