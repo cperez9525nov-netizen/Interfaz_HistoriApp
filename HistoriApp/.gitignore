@@ -12,3 +12,7 @@
 # Carpetas del sistema operativo
 .DS_Store
 Thumbs.db
+
+# Script 
+
+*.sh
