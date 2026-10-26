@@ -65,15 +65,19 @@
 
       <!-- FORMULARIO DE ACCESO TRADICIONAL -->
       <h:form>
+
+        <!-- Componente de mensajes de PrimeFaces -->
+        <p:messages id="mensajesError" showDetail="true" closable="true" styleClass="mb-3" />
+
         <!-- Input Email -->
         <div class="form-floating mb-3">
-          <h:inputText class="form-control bg-dark text-white border-secondary" id="floatingInput" value="" required="required" />
+          <h:inputText class="form-control bg-dark text-white border-secondary" id="floatingInput" value="#{loginBean.email}" required="required" />
           <label for="floatingInput" class="text-secondary">Correo electrónico</label>
         </div>
 
         <!-- Input Contraseña -->
         <div class="form-floating mb-3">
-          <h:inputSecret class="form-control bg-dark text-white border-secondary" id="floatingPassword" value="" required="required" />
+          <h:inputSecret class="form-control bg-dark text-white border-secondary" id="floatingPassword" value="#{loginBean.password}" required="required" />
           <label for="floatingPassword" class="text-secondary">Contraseña</label>
         </div>
 
@@ -89,7 +93,7 @@
         </div>
 
         <!-- Botón Iniciar Sesión -->
-        <h:commandButton class="btn btn-outline-warning w-100 py-2 fw-bold mb-3" value="Iniciar Sesión" type="submit" />
+        <h:commandButton update="mensajesError @form" class="btn btn-outline-warning w-100 py-2 fw-bold mb-3" value="Iniciar Sesión"  action="#{loginBean.iniciarSesion()}" />
       </h:form>
 
       <!-- SEPARADOR PARA INVITADO -->
@@ -122,27 +126,31 @@
     </div>
 
     <h:form>
+
+      <!-- Componente de mensajes de PrimeFaces -->
+      <p:messages id="errorMessages" showDetail="true" closable="true" styleClass="mb-3" />
+
       <div class="form-floating mb-3">
-        <h:inputText class="form-control bg-dark text-white border-secondary" id="regName" value="" required="required" />
+        <h:inputText class="form-control bg-dark text-white border-secondary" id="regName" value="#{registroBean.nombre}" required="required" />
         <label for="regName" class="text-secondary">Nombre completo</label>
       </div>
 
       <div class="form-floating mb-3">
-        <h:inputText class="form-control bg-dark text-white border-secondary" id="regEmail" value="" required="required" />
+        <h:inputText class="form-control bg-dark text-white border-secondary" id="regEmail" value="#{registroBean.email}" required="required" />
         <label for="regEmail" class="text-secondary">Correo electrónico</label>
       </div>
 
       <div class="form-floating mb-3">
-        <h:inputSecret class="form-control bg-dark text-white border-secondary" id="regPassword" value="" required="required" />
+        <h:inputSecret class="form-control bg-dark text-white border-secondary" id="regPassword" value="#{registroBean.password}" required="required" />
         <label for="regPassword" class="text-secondary">Contraseña</label>
       </div>
 
       <div class="form-floating mb-3">
-        <h:inputSecret class="form-control bg-dark text-white border-secondary" id="regPasswordConfirm" value="" required="required" />
+        <h:inputSecret class="form-control bg-dark text-white border-secondary" id="regPasswordConfirm" value="#{registroBean.confirmPassword}" required="required" />
         <label for="regPasswordConfirm" class="text-secondary">Repetir contraseña</label>
       </div>
 
-      <h:commandButton class="btn btn-outline-warning w-100 py-2 fw-bold mb-3" value="Registrarse" type="submit" />
+      <h:commandButton class="btn btn-outline-warning w-100 py-2 fw-bold mb-3" update="errorMessages @form" value="Registrarse" action="#{registroBean.registrar()}" />
     </h:form>
 
     <div class="text-center mt-2 pt-2 border-top border-secondary">
