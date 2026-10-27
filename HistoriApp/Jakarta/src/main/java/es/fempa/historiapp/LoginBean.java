@@ -56,19 +56,26 @@ public class LoginBean implements Serializable {
 
     public String iniciarSesion() {
 
-    Usuarios usuarioEncontrado = usuarioBean.validarCredenciales(email, password);
+        if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de inicio de sesión", "Todos los campos son obligatorios"));
+            return null;
+        }
 
-    if (usuarioEncontrado != null) {
+        Usuarios usuarioEncontrado = usuarioBean.validarCredenciales(email, password);
 
-        // Credenciales correctas
-        return "index.xhtml?faces-redirect=true";
+        if (usuarioEncontrado != null) {
 
-    } else {
+            // Credenciales correctas
+            loggedIn = true;
+            return "index.xhtml?faces-redirect=true";
 
-        FacesContext.getCurrentInstance().addMessage(null, 
-            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de inicio de sesión", "Correo o contraseña incorrectos"));
-        return null;
+        } else {
 
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de inicio de sesión", "Correo o contraseña incorrectos"));
+            return null;
+
+        }
     }
-}
 }

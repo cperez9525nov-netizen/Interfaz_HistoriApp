@@ -33,3 +33,32 @@ html, body {
     padding: 0 0.75rem;
     z-index: 2;
 }
+
+/* Forzar botón transparente con borde y texto amarillo en cualquier estado de PrimeFaces */
+.ui-button.btn-outline-warning-custom,
+.ui-button.ui-widget.btn-outline-warning-custom,
+.ui-button.ui-state-default.btn-outline-warning-custom {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #ffc107 !important;
+    border: 1px solid #ffc107 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Asegurar que el texto interno coja el color del botón */
+.ui-button.btn-outline-warning-custom .ui-button-text {
+    color: inherit !important;
+}
+
+/* Efecto Hover y Focus: Fondo completamente amarillo y texto oscuro */
+.ui-button.btn-outline-warning-custom:hover, 
+.ui-button.btn-outline-warning-custom:focus,
+.ui-button.btn-outline-warning-custom.ui-state-hover,
+.ui-button.btn-outline-warning-custom.ui-state-focus {
+    background: #ffc107 !important;
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+    border-color: #ffc107 !important;
+}

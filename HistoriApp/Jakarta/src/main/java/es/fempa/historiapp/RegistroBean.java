@@ -57,10 +57,11 @@ public class RegistroBean implements Serializable {
 
         boolean ok = true;
 
-        if (email.trim().isEmpty() || nombre.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (email == null || email.trim().isEmpty() || nombre == null || nombre.trim().isEmpty() || password == null || password.trim().isEmpty() || confirmPassword == null || confirmPassword.trim().isEmpty()) {
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Todos los campos son obligatorios."));
             ok = false;
+            return;
 
         }
 
