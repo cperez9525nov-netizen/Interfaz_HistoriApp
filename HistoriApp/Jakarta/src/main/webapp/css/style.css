@@ -124,3 +124,27 @@
   color: #adb5bd !important; /* Gris claro de la paleta de Bootstrap */
   opacity: 1; /* Necesario para Firefox */
 }
+
+/* Forzar el tema oscuro absoluto en el acordeón de PrimeFaces */
+.custom-accordion.ui-accordion,
+.custom-accordion.ui-accordion .ui-accordion-header,
+.custom-accordion.ui-accordion .ui-accordion-header a,
+.custom-accordion.ui-accordion .ui-accordion-content,
+.custom-accordion.ui-accordion .ui-widget-content {
+    background-color: #212529 !important;
+    border-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+/* Estado activo (cuando se despliega una pestaña) */
+.custom-accordion.ui-accordion .ui-accordion-header.ui-state-active,
+.custom-accordion.ui-accordion .ui-accordion-header.ui-state-active a {
+    background-color: #343a40 !important;
+    border-color: #6c757d !important;
+    color: #ffc107 !important;
+}
+
+/* Evitar que los textos internos cojan colores por defecto de PrimeFaces */
+.custom-accordion.ui-accordion .ui-accordion-content p {
+    color: #dee2e6 !important;
+}
