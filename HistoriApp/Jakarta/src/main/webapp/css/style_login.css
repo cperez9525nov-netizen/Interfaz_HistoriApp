@@ -62,3 +62,14 @@ html, body {
     color: #212529 !important;
     border-color: #ffc107 !important;
 }
+
+/* Ajustes para el desplegable del perfil en la Navbar */
+.dropdown-menu-dark {
+    background-color: #212529 !important;
+    border-color: #6c757d !important;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #343a40 !important;
+    color: #ffc107 !important;
+}

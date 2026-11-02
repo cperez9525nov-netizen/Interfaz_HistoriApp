@@ -17,6 +17,8 @@ public class LoginBean implements Serializable {
 
     private boolean loggedIn = false;
 
+    private Usuarios usuarioLogueado;
+
 
     // Constructores
 
@@ -52,6 +54,14 @@ public class LoginBean implements Serializable {
         this.password = password;
     }
 
+    public Usuarios getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Usuarios usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
+
     // Método de login
 
     public String iniciarSesion() {
@@ -79,6 +89,8 @@ public class LoginBean implements Serializable {
 
             // Credenciales correctas
             loggedIn = true;
+            this.usuarioLogueado = usuarioEncontrado;
+
             return "index.xhtml?faces-redirect=true";
 
         } else {
@@ -89,4 +101,10 @@ public class LoginBean implements Serializable {
 
         }
     }
+
+    public String cerrarSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/login.xhtml?faces-redirect=true";
+    }
+
 }
