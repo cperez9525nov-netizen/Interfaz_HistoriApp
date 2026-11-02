@@ -72,18 +72,18 @@
   <span class="badge bg-danger">Cronología</span>
 </div>
 
-    <!-- ACORDEÓN DE BOOTSTRAP -->
-    <p:accordionPanel value="#{batallasBean.listaBatallas}" var="batalla" dynamic="true" cache="true" styleClass="custom-accordion">
+    <!-- Acordeón de PrimeFaces -->
+    <p:accordionPanel value="#{batallasBean.listaBatallas}" var="batalla" dynamic="true" cache="true" activeIndex="-1" styleClass="custom-accordion">
         <p:tab>
-            <!-- Cabecera personalizada de la pestaña para imitar el diseño anterior -->
+            <!-- Cabecera personalizada de la pestaña para imitar el primer diseño que hice en el html original -->
             <f:facet name="title">
-                <div class="d-flex justify-content-between align-items-center w-100 pe-3">
-                    <div class="me-auto pe-2 text-start">
-                        <strong class="text-white">#{batalla.titulo}</strong>
-                        <div class="small text-muted">#{batalla.subtitulo}</div>
-                    </div>
-                    <span class="badge bg-outline-light border text-warning me-2">#{batalla.anyo}</span>
+              <div class="d-flex justify-content-between align-items-center w-100 pe-3">
+                <div class="me-auto pe-2 text-start">
+                  <strong class="text-white">#{batalla.titulo}</strong>
+                    <div class="small text-warning">#{batalla.subtitulo}</div>
                 </div>
+                <span class="badge bg-outline-light border text-warning me-2">#{batalla.anyo}</span>
+              </div>
             </f:facet>
 
             <!-- Cuerpo de la pestaña -->
