@@ -62,6 +62,17 @@ public class LoginBean implements Serializable {
             return null;
         }
 
+        // Método para validar el formato del correo electrónico
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        boolean ok = true;
+
+        if (!email.matches(emailRegex)) {
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El formato del correo electrónico no es válido."));
+            ok = false;
+
+        }
+
         Usuarios usuarioEncontrado = usuarioBean.validarCredenciales(email, password);
 
         if (usuarioEncontrado != null) {

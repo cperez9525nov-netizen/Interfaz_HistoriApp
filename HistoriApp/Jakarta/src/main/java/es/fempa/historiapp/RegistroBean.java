@@ -65,6 +65,16 @@ public class RegistroBean implements Serializable {
 
         }
 
+        // Método para validar el formato del correo electrónico
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+        if (!email.matches(emailRegex)) {
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El formato del correo electrónico no es válido."));
+            ok = false;
+
+        }
+
         if (!password.equals(confirmPassword)) {
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Las contraseñas no coinciden."));
@@ -75,6 +85,16 @@ public class RegistroBean implements Serializable {
         if (password.length() < 6) {
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La contraseña debe tener al menos 6 caracteres."));
+            ok = false;
+
+        }
+
+        // Método para validar que la contraseña al menos una mayúscula y un carácter especial
+        String passwordRegex = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>-]).+$";
+
+        if (!password.matches(passwordRegex)) {
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "La contraseña debe incluir al menos una letra mayúscula y un carácter especial."));
             ok = false;
 
         }
