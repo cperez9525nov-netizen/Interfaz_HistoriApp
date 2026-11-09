@@ -42,17 +42,14 @@
               <f:selectItem itemValue="III d.C." itemLabel="III d.C." />
               <f:selectItem itemValue="IV d.C." itemLabel="IV d.C." />
               
-              <p:ajax event="change" update=":formAcordeon:acordeonBatallas" />
-            </h:selectOneMenu>
+              <p:ajax event="change" update=":formAcordeon:acordeonBatallas :contenedorDatos" oncomplete="actualizarMapa()"/>   
+            </h:selectOneMenu>           
           </div>
         </h:form>
 
-        <!-- Contenedor con desplazamiento suave para pantallas pequeñas -->
-        <div class="card-body p-0 overflow-x-auto text-center">
-          <img src="#{request.contextPath}/img/division-imperio-romano.webp" 
-               class="img-fluid w-100" 
-               alt="División del Imperio Romano de Occidente" 
-               style="min-width: 600px; object-fit: contain;" />
+        <!-- Mapa de Leaflet -->
+        <div class="card-body p-0">
+          <div id="map" style="height: 550px; width: 100%;"></div>
         </div>
       </div>
     </div>
@@ -111,6 +108,74 @@
   </div>
 </main>
 
+      <!-- CONTENEDOR OCULTO PARA PASAR DATOS DE JAVA A JAVASCRIPT -->
+        <h:panelGroup id="contenedorDatos" style="display:none;">
+            <ui:repeat value="#{batallasBean.batallasDelSigloSeleccionado}" var="b">
+                <div class="batalla-item"
+                     data-titulo="#{b.titulo}"
+                     data-subtitulo="#{b.subtitulo}"
+                     data-lat="#{b.latitud}"
+                     data-lng="#{b.longitud}"
+                     data-desc="#{b.descripcion}"
+                     data-anyo="#{b.anyo}">
+                </div>
+            </ui:repeat>
+        </h:panelGroup>
+
+<script>
+//<![CDATA[
+  var map = L.map('map').setView([41.9028, 12.4964], 5);
+
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var marcadoresLayer = L.layerGroup().addTo(map);
+
+  function actualizarMapa() {
+      if (typeof marcadoresLayer !== 'undefined') {
+          marcadoresLayer.clearLayers();
+      }
+      
+      var elementos = document.querySelectorAll('#contenedorDatos .batalla-item');
+      
+      elementos.forEach(function(el) {
+          var lat = parseFloat(el.getAttribute('data-lat'));
+          var lng = parseFloat(el.getAttribute('data-lng'));
+          
+          var titulo = el.getAttribute('data-titulo') || '';
+          var subtitulo = el.getAttribute('data-subtitulo') || '';
+          var desc = el.getAttribute('data-desc') || '';
+          var anyo = el.getAttribute('data-anyo') || '';
+
+          // Ahora ya puedes usar el && de JavaScript normal y corriente sin que el XML sufra
+          if (!isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
+              var marker = L.marker([lat, lng]).addTo(marcadoresLayer);
+              
+              var contenidoPopup = '<div style="color: #000; max-width: 200px;">' +
+                  '<strong>' + titulo + ' (' + anyo + ')</strong><br/>' +
+                  '<small style="color: #555;">' + subtitulo + '</small><hr style="margin: 4px 0;"/>' +
+                  '<p style="font-size: 11px; margin: 0;">' + desc + '</p>' +
+                  '</div>';
+              
+              marker.bindPopup(contenidoPopup);
+          }
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() { 
+          if(map) {
+              map.invalidateSize();
+              actualizarMapa();
+          }
+      }, 500);
+  });
+//]]>
+</script>
+
     </ui:define>
 
 </ui:composition>
+
