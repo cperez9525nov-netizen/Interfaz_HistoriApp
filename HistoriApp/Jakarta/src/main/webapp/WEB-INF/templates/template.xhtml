@@ -36,7 +36,7 @@
       
       <!-- LADO IZQUIERDO: Marca y Menú de enlaces -->
       <div class="d-flex align-items-center flex-grow-1">
-        <a class="navbar-brand me-3" href="#">HistoriApp</a>
+        <a class="navbar-brand me-3" href="#{request.contextPath}/index.xhtml">HistoriApp</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#">Biografías</a>
@@ -69,12 +69,12 @@
             <!-- Menú Desplegable con diseño oscuro -->
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser">
               <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                <a class="dropdown-item d-flex align-items-center gap-2" href="#{request.contextPath}/perfil.xhtml">
                   <i class="bi bi-person"></i> Perfil
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                <a class="dropdown-item d-flex align-items-center gap-2" href="#{request.contextPath}/configuracion.xhtml">
                   <i class="bi bi-gear"></i> Configuración
                 </a>
               </li>
@@ -106,7 +106,7 @@
 
     <!-- CONTENIDO DE CADA PÁGINA -->
     
-    <ui:insert name="contenido">HistoriApp</ui:insert> // Esto es lo que inserta en el resto de xhtml
+    <ui:insert name="contenido">HistoriApp</ui:insert> 
 
     <!-- Cada página tendrá su propio contenido aquí -->
 
@@ -156,14 +156,44 @@
       </div>
 
       <!-- COLUMNA 3: Newsletter -->
-      <div class="col-md-4 text-center">
-        <h4 class="h5 text-warning fw-bold mb-3">Suscríbete a la Newsletter</h4>
-        <p class="small text-secondary mb-3">Únete a nuestra comunidad para recibir contenido exclusivo y relevante para historiadores y cartógrafos.</p>
-        <h:form class="d-flex justify-content-center gap-2">
-          <h:inputText type="email" class="form-control form-control-sm bg-dark text-white border-secondary w-75 placeholder-light" placeholder="Tu correo electrónico aquí..." aria-label="Correo de suscripción"/>
-          <h:commandButton value="Unirse" class="btn btn-outline-success fw-bold" type="submit" style="background-color: #212529;"/>
-        </h:form>
+      <!-- COLUMNA 3: Newsletter Dinámica -->
+<div class="col-md-4 text-center">
+  <h:panelGroup id="seccionNewsletter" layout="block">
+    
+    <!-- BLOQUE 1: Se muestra solo cuando NO está suscrito -->
+    <ui:fragment rendered="#{!newsletterBean.suscrito}">
+      <h4 class="h5 text-warning fw-bold mb-3">Suscríbete a la Newsletter</h4>
+      <p class="small text-secondary mb-3">Únete a nuestra comunidad para recibir contenido exclusivo y relevante para historiadores y cartógrafos.</p>
+      
+      <h:form class="d-flex justify-content-center gap-2">
+        <h:inputText value="#{newsletterBean.correo}" 
+                     type="email" 
+                     class="form-control form-control-sm bg-dark text-white border-secondary w-75 placeholder-light" 
+                     placeholder="Tu correo electrónico aquí..." 
+                     aria-label="Correo de suscripción" 
+                     required="true" />
+                     
+        <p:commandButton value="Unirse" 
+                         action="#{newsletterBean.suscribir()}" 
+                         update=":seccionNewsletter :mensajes" 
+                         styleClass="btn btn-outline-success fw-bold" 
+                         style="background-color: #212529;" />
+      </h:form>
+    </ui:fragment>
+
+    <!-- BLOQUE 2: Se muestra automáticamente tras pulsar "Unirse" -->
+    <ui:fragment rendered="#{newsletterBean.suscrito}">
+      <div class="p-3 border border-success rounded-3 bg-dark text-center shadow-sm">
+        <i class="bi bi-check-circle-fill text-success fs-2 mb-2 d-block"></i>
+        <h5 class="text-warning fw-bold mb-1">¡Gracias por unirte!</h5>
+        <p class="small text-light mb-0">
+          Hemos registrado tu suscripción correctamente. Pronto recibirás noticias en tu bandeja de entrada.
+        </p>
       </div>
+    </ui:fragment>
+
+  </h:panelGroup>
+</div>
 
     </div>
 
