@@ -148,3 +148,19 @@
 .custom-accordion.ui-accordion .ui-accordion-content p {
     color: #dee2e6 !important;
 }
+
+/* Personalización del BreadCrumb de PrimeFaces en el Navbar Oscuro */
+.custom-breadcrumb .ui-menuitem-link {
+    font-size: 0.85rem !important; /* Tamaño más pequeño que el brand principal */
+    color: #adb5bd !important;    /* Color secundario elegante de Bootstrap */
+    text-decoration: none !important;
+}
+
+.custom-breadcrumb .ui-menuitem-link:hover {
+    color: #ffc107 !important;    /* Color amarillo corporativo al pasar el ratón */
+}
+
+.custom-breadcrumb .ui-breadcrumb-chevron {
+    color: #6c757d !important;    /* Color de las flechas separadoras */
+    font-size: 0.75rem !important;
+}
