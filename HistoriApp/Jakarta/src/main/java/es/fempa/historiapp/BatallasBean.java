@@ -12,7 +12,7 @@ import java.util.List;
 public class BatallasBean implements java.io.Serializable {
 
     // Variable para que se tenga control sobre el siglo
-    private String sigloSeleccionado = "III";
+    private String sigloSeleccionado = "III a.C.";
 
     // Lista global de batallas
     private List<Batallas> listaBatallas;

@@ -7,6 +7,18 @@
     <display-name>HistoriApp</display-name>
 
     <!-- ==============================
+         Parámetros de configuración de PrimeFaces (reCAPTCHA v2)
+         ============================== -->
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6LcsYxguAAAAAC5jOpg_mlW2pJeywjrOWgjvjmoe</param-value> <!-- La clave pública del captcha -->
+    </context-param>
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+        <param-value>6LcsYxguAAAAACdWZRCBfazYvjTWQLn1T6nzn8-C</param-value> <!-- La clave secreta del captcha -->
+    </context-param>
+
+    <!-- ==============================
          Weld / CDI
          ============================== -->
     <listener>

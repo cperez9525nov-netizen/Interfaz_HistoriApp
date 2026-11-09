@@ -125,6 +125,7 @@
       <p class="text-secondary small">Crea tu cuenta de historiador</p>
     </div>
 
+    <!-- FORMULARIO DE REGISTRO -->
     <h:form>
 
       <div class="form-floating mb-3">
@@ -145,6 +146,11 @@
       <div class="form-floating mb-3">
         <h:inputSecret class="form-control bg-dark text-white border-secondary" id="regPasswordConfirm" value="#{registroBean.confirmPassword}" />
         <label for="regPasswordConfirm" class="text-secondary">Repetir contraseña</label>
+      </div>
+
+      <!-- Captcha -->
+       <div class="mb-3 text-center d-flex justify-content-center">
+        <p:captcha id="captchaRegistro" label="Captcha" language="es" />
       </div>
 
       <p:commandButton styleClass="btn btn-outline-warning-custom w-100 py-2 fw-bold mb-3" update="growlGlobalRegistro @form" value="Registrarse" action="#{registroBean.registrar()}" />
