@@ -28,17 +28,24 @@
     <!-- COLUMNA IZQUIERDA: Mapa Histórico -->
     <div class="col-lg-9">
       <div class="card bg-dark text-white border-secondary shadow overflow-hidden">
-        <div class="card-header bg-dark border-secondary d-flex justify-content-center align-items-center py-3">
-          <label for="select-siglo" class="h5 mb-0 text-warning me-3 fw-bold">SIGLO:</label>
+
+        <h:form id="formSiglo">
+          <div class="card-header bg-dark border-secondary d-flex justify-content-center align-items-center py-3">
+            <label for="select-siglo" class="h5 mb-0 text-warning me-3 fw-bold">SIGLO:</label>
           
-          <select class="form-select bg-dark text-warning border-warning w-auto fw-bold" id="select-siglo" aria-label="Seleccionar siglo">
-            <option value="IV">IV</option>
-            <option value="V" selected="selected">V</option>
-            <option value="VI">VI</option>
-            <option value="VII">VII</option>
-            <option value="VIII">VIII</option>
-          </select>
-        </div>
+            <h:selectOneMenu id="select-siglo" value="#{batallasBean.sigloSeleccionado}" styleClass="form-select bg-dark text-warning border-warning w-auto fw-bold">
+              <f:selectItem itemValue="III a.C." itemLabel="III a.C." />
+              <f:selectItem itemValue="II a.C." itemLabel="II a.C." />
+              <f:selectItem itemValue="I a.C." itemLabel="I a.C." />
+              <f:selectItem itemValue="I d.C." itemLabel="I d.C." />
+              <f:selectItem itemValue="II d.C." itemLabel="II d.C." />
+              <f:selectItem itemValue="III d.C." itemLabel="III d.C." />
+              <f:selectItem itemValue="IV d.C." itemLabel="IV d.C." />
+              
+              <p:ajax event="change" update=":formAcordeon:acordeonBatallas" />
+            </h:selectOneMenu>
+          </div>
+        </h:form>
 
         <!-- Contenedor con desplazamiento suave para pantallas pequeñas -->
         <div class="card-body p-0 overflow-x-auto text-center">
@@ -73,7 +80,8 @@
 </div>
 
     <!-- Acordeón de PrimeFaces -->
-    <p:accordionPanel value="#{batallasBean.listaBatallas}" var="batalla" dynamic="true" cache="true" activeIndex="-1" styleClass="custom-accordion">
+     <h:form id="formAcordeon">
+    <p:accordionPanel id="acordeonBatallas" value="#{batallasBean.batallasDelSigloSeleccionado}" var="batalla" dynamic="true" cache="true" activeIndex="-1" styleClass="custom-accordion">
         <p:tab>
             <!-- Cabecera personalizada de la pestaña para imitar el primer diseño que hice en el html original -->
             <f:facet name="title">
@@ -95,6 +103,7 @@
             </div>
         </p:tab>
     </p:accordionPanel>
+    </h:form>
 
   </div>
 </div>
