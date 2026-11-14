@@ -133,6 +133,14 @@
 
   var marcadoresLayer = L.layerGroup().addTo(map);
 
+  // Nuevo marcador personalizado: icono de las dos espadas
+  var iconoEspadas = L.icon({
+      iconUrl: '#{request.contextPath}/img/espadas-cruzadas.png',
+      iconSize: [36, 36],     // Tamaño del icono en píxeles
+      iconAnchor: [18, 18],   // El punto central del icono que se posiciona en las coordenadas
+      popupAnchor: [0, -18]   // Dónde se abre el bocadillo de información respecto al icono
+  });
+
   function actualizarMapa() {
       if (typeof marcadoresLayer !== 'undefined') {
           marcadoresLayer.clearLayers();
@@ -151,7 +159,7 @@
 
           // Ahora ya puedes usar el && de JavaScript normal y corriente sin que el XML sufra
           if (!isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
-              var marker = L.marker([lat, lng]).addTo(marcadoresLayer);
+              var marker = L.marker([lat, lng], { icon: iconoEspadas }).addTo(marcadoresLayer);
               
               var contenidoPopup = '<div style="color: #000; max-width: 200px;">' +
                   '<strong>' + titulo + ' (' + anyo + ')</strong><br/>' +
