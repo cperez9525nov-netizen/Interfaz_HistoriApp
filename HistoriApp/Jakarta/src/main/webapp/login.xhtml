@@ -54,16 +54,23 @@
         </div>
 
         <!-- BOTONES DE REDES SOCIALES -->
+        <h:form>
         <div class="d-grid gap-2 mb-3">
-          <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2 py-2" type="button">
+          <h:commandLink action="#{loginBean.iniciarConGoogle()}" 
+                         styleClass="btn btn-outline-light d-flex align-items-center justify-content-center gap-2 py-2">
             <i class="bi bi-google text-danger"></i>
             <span>Continuar con Google</span>
-          </button>
-          <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2 py-2" type="button">
+            <f:ajax render=":growlGlobalLogin" />
+          </h:commandLink>
+
+          <h:commandLink action="#{loginBean.iniciarConApple()}" 
+                         styleClass="btn btn-outline-light d-flex align-items-center justify-content-center gap-2 py-2">
             <i class="bi bi-apple"></i>
             <span>Continuar con Apple</span>
-          </button>
+            <f:ajax render=":growlGlobalLogin" />
+          </h:commandLink>
         </div>
+      </h:form>
 
         <!-- SEPARADOR -->
         <div class="divider-text text-muted small texto-aviso4">

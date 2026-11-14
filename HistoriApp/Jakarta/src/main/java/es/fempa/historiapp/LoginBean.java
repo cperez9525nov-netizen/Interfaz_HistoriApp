@@ -107,4 +107,35 @@ public class LoginBean implements Serializable {
         return "/login.xhtml?faces-redirect=true";
     }
 
+    public String iniciarConGoogle() {
+        Usuarios usuarioGoogle = new Usuarios();
+        // O bien le pones un nombre fijo amigable o lo extraes del correo simulado
+        usuarioGoogle.setNombre("Cristian Google"); 
+        usuarioGoogle.setEmail("cristian.google@gmail.com");
+
+        this.usuarioLogueado = usuarioGoogle;
+        
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogueado", usuarioGoogle);
+        
+        FacesContext.getCurrentInstance().addMessage(null, 
+            new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Sesión iniciada correctamente con Google."));
+            
+        return "index.xhtml?faces-redirect=true";
+    }
+
+    public String iniciarConApple() {
+        Usuarios usuarioApple = new Usuarios();
+        usuarioApple.setNombre("Angie Apple");
+        usuarioApple.setEmail("angie.apple@icloud.com");
+
+        this.usuarioLogueado = usuarioApple;
+        
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogueado", usuarioApple);
+        
+        FacesContext.getCurrentInstance().addMessage(null, 
+            new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Sesión iniciada correctamente con Apple."));
+            
+        return "index.xhtml?faces-redirect=true";
+    }
+
 }
