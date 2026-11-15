@@ -43,10 +43,10 @@ public class NewsletterBean implements Serializable {
             return;
         }
 
-        // Si la validación es correcta, cambiamos el estado a true
+        // Si la validación es correcta, se cambia el estado a true
         this.suscrito = true;
         
-        // Opcional: También dejamos una notificación flotante de confirmación
+        // Growl de confirmación
         FacesContext.getCurrentInstance().addMessage(null, 
             new FacesMessage(FacesMessage.SEVERITY_INFO, "¡Bienvenido!", "Suscripción realizada con éxito."));
     }

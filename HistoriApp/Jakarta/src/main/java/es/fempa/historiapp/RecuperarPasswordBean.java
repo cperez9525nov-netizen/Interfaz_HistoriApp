@@ -41,7 +41,7 @@ public class RecuperarPasswordBean implements Serializable {
             return;
         }
 
-        // Si todo es correcto, simulamos el envío de la contraseña
+        // Si todo es correcto, se simula el envío de la contraseña
         enviado = true;
         
         FacesContext.getCurrentInstance().addMessage(null,

@@ -89,7 +89,7 @@ public class RegistroBean implements Serializable {
 
         }
 
-        // Método para validar que la contraseña al menos una mayúscula y un carácter especial
+        // Método para validar que la contraseña tiene al menos una mayúscula y un carácter especial
         String passwordRegex = "^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>-]).+$";
 
         if (!password.matches(passwordRegex)) {

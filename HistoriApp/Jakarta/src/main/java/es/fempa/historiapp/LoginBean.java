@@ -32,7 +32,7 @@ public class LoginBean implements Serializable {
     
     }
 
-    // Inyectamos el UsuarioBean para mockear sus datos aquí con los setters
+    // Inyecto el UsuarioBean para mockear sus datos aquí con los setters
 
     @Inject
     private UsuarioBean usuarioBean;
@@ -109,7 +109,7 @@ public class LoginBean implements Serializable {
 
     public String iniciarConGoogle() {
         Usuarios usuarioGoogle = new Usuarios();
-        // O bien le pones un nombre fijo amigable o lo extraes del correo simulado
+        // Correo simulado de google
         usuarioGoogle.setNombre("Cristian Google"); 
         usuarioGoogle.setEmail("cristian.google@gmail.com");
 
@@ -125,6 +125,7 @@ public class LoginBean implements Serializable {
 
     public String iniciarConApple() {
         Usuarios usuarioApple = new Usuarios();
+        // Correo siimulado de apple
         usuarioApple.setNombre("Angie Apple");
         usuarioApple.setEmail("angie.apple@icloud.com");
 
