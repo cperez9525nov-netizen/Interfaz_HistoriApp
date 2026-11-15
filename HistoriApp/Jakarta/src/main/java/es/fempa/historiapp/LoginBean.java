@@ -138,4 +138,15 @@ public class LoginBean implements Serializable {
         return "index.xhtml?faces-redirect=true";
     }
 
+    // Por no crear otro BEAN innecesario, añado estos dos métodos aquí del apartado de configuración y perfil para el growl
+    public void guardarPerfil() {
+        FacesContext.getCurrentInstance().addMessage(null, 
+            new FacesMessage(FacesMessage.SEVERITY_INFO, "Perfil actualizado", "¡Datos modificados correctamente!"));
+    }
+
+    public void guardarPreferencias() {
+        FacesContext.getCurrentInstance().addMessage(null, 
+            new FacesMessage(FacesMessage.SEVERITY_INFO, "Configuración guardada", "¡Preferencias guardadas correctamente!"));
+    }
+
 }

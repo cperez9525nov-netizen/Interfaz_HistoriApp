@@ -11,6 +11,8 @@
 
     <ui:define name="contenido">
 
+    <p:growl id="growlPerfil" showDetail="true" life="4000" />
+
         <!-- Imagen de fondo -->
         <div class="imagen-fondo">
             <img src="#{request.contextPath}/img/grabadoIndex.jpg" alt="Imagen de grabado de la ciudad de Roma en época Imperial" />
@@ -112,9 +114,9 @@
                         </a>
                         
                         <h:commandButton value="Guardar Perfil" 
-                            styleClass="py-2 px-4 fw-bold rounded btn-custom-warning" 
-                            action="#{loginBean.guardarPerfil}">
-                        <f:ajax execute="@form" render=":mensajes" />
+                                         styleClass="py-2 px-4 fw-bold rounded btn-custom-warning" 
+                                         action="#{loginBean.guardarPerfil()}">
+                            <f:ajax execute="@form" render=":growlPerfil" />
                         </h:commandButton>
                     </div>
                 </h:form>
