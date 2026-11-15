@@ -11,14 +11,114 @@
 
     <ui:define name="contenido">
 
-    <div class="imagen-fondo">
-        <img src="#{request.contextPath}/img/grabadoIndex.jpg" alt="Imagen de grabado de la ciudad de Roma en época Imperial" />
-    </div>
+        <!-- Imagen de fondo -->
+        <div class="imagen-fondo">
+            <img src="#{request.contextPath}/img/grabadoIndex.jpg" alt="Imagen de grabado de la ciudad de Roma en época Imperial" />
+        </div>
 
-        <main class="container my-5 text-white">
-            <div class="card bg-dark border-secondary p-4 shadow">
-                <h2 class="text-warning mb-4"><i class="bi bi-person me-2"></i>Mi Perfil</h2>
-                <!-- Aquí añadiré los campos para ver y editar los datos del usuario -->
+        <main class="container my-5 text-white" style="max-width: 720px;">
+            <div class="card bg-dark border-secondary p-4 shadow-lg" style="background-color: rgba(33, 37, 41, 0.9) !important;">
+                
+                <!-- Cabecera del perfil con insignia -->
+                <div class="text-center mb-4">
+                    <div class="position-relative d-inline-block">
+                        <i class="bi bi-person-circle text-warning display-3"></i>
+                        <span class="position-absolute bottom-0 end-0 badge rounded-pill bg-danger border border-dark">
+                            <i class="bi bi-shield-shaded"></i>
+                        </span>
+                    </div>
+                    <h2 class="text-warning fw-bold mt-2 mb-1">
+                        #{not empty loginBean.usuarioLogueado ? loginBean.usuarioLogueado.nombre : 'Historiador Invitado'}
+                    </h2>
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1">Cronista del Imperio</span>
+                </div>
+
+                <!-- Barra de estadísticas rápidas -->
+                <div class="row text-center bg-secondary bg-opacity-10 rounded-3 border border-secondary py-3 mb-4 mx-0">
+                    <div class="col-4 border-end border-secondary">
+                        <div class="h4 text-warning fw-bold mb-0">26</div>
+                        <small class="text-secondary">Batallas exploradas</small>
+                    </div>
+                    <div class="col-4 border-end border-secondary">
+                        <div class="h4 text-warning fw-bold mb-0">VII</div>
+                        <small class="text-secondary">Siglos recorridos</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="h4 text-warning fw-bold mb-0">2026</div>
+                        <small class="text-secondary">Miembro desde</small>
+                    </div>
+                </div>
+
+                <h:form>
+                    <h5 class="text-warning border-bottom border-secondary pb-2 mb-3">
+                        <i class="bi bi-card-heading me-2"></i>Datos de la Cuenta
+                    </h5>
+
+                    <div class="row g-3 mb-3">
+                        <!-- Nombre Editable -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h:inputText class="form-control bg-dark text-white border-secondary" id="perfilNombre" value="#{loginBean.usuarioLogueado.nombre}" />
+                                <label for="perfilNombre" class="text-secondary">Nombre completo</label>
+                            </div>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h:inputText class="form-control bg-dark text-secondary border-secondary" id="perfilEmail" value="#{loginBean.usuarioLogueado.email}" disabled="true" />
+                                <label for="perfilEmail" class="text-secondary">Correo electrónico</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="text-warning border-bottom border-secondary pb-2 mt-4 mb-3">
+                        <i class="bi bi-compass me-2"></i>Intereses Históricos
+                    </h5>
+
+                    <div class="row g-3 mb-3">
+                        <!-- Especialidad -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h:selectOneMenu id="especialidad" styleClass="form-select bg-dark text-white border-secondary">
+                                    <f:selectItem itemValue="rep" itemLabel="República Romana" />
+                                    <f:selectItem itemValue="imp" itemLabel="Alto Imperio" />
+                                    <f:selectItem itemValue="pun" itemLabel="Guerras Púnicas" />
+                                    <f:selectItem itemValue="tar" itemLabel="Antigüedad Tardía" />
+                                </h:selectOneMenu>
+                                <label for="especialidad" class="text-secondary">Época favorita</label>
+                            </div>
+                        </div>
+
+                        <!-- Ciudad -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <h:inputText class="form-control bg-dark text-white border-secondary" id="perfilCiudad" value="Roma, Italia" />
+                                <label for="perfilCiudad" class="text-secondary">Ciudad</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Biografía corta -->
+                    <div class="form-floating mb-4">
+                        <h:inputTextarea class="form-control bg-dark text-white border-secondary" id="perfilBio" style="height: 90px;" value="Apasionado por la estrategia militar antigua, las legiones romanas y la cartografía histórica del Mediterráneo." />
+                        <label for="perfilBio" class="text-secondary">Nota biográfica</label>
+                    </div>
+
+                    <!-- Botones de acción -->
+                   <div class="d-flex justify-content-between gap-2">
+                        <a href="#{request.contextPath}/index.xhtml" class="btn btn-outline-secondary py-2 px-4">
+                            <i class="bi bi-arrow-left me-1"></i> Volver al mapa
+                        </a>
+                        
+                        <h:commandButton value="Guardar Perfil" 
+                            styleClass="py-2 px-4 fw-bold rounded btn-custom-warning" 
+                            action="#{loginBean.guardarPerfil}">
+                        <f:ajax execute="@form" render=":mensajes" />
+                        </h:commandButton>
+                    </div>
+                </h:form>
+
             </div>
         </main>
     </ui:define>

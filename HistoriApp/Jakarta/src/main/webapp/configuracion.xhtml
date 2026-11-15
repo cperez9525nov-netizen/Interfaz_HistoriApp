@@ -11,14 +11,56 @@
 
     <ui:define name="contenido">
 
-    <div class="imagen-fondo">
-        <img src="#{request.contextPath}/img/grabadoIndex.jpg" alt="Imagen de grabado de la ciudad de Roma en época Imperial" />
-    </div>
+        <!-- Imagen de fondo -->
+        <div class="imagen-fondo">
+            <img src="#{request.contextPath}/img/grabadoIndex.jpg" alt="Imagen de grabado de la ciudad de Roma en época Imperial" />
+        </div>
 
-        <main class="container my-5 text-white">
-            <div class="card bg-dark border-secondary p-4 shadow">
-                <h2 class="text-warning mb-4"><i class="bi bi-gear me-2"></i>Configuración</h2>
-                <!-- Aquí las opciones de configuración -->
+        <main class="container my-5 text-white" style="max-width: 600px;">
+            <div class="card bg-dark border-secondary p-4 shadow-lg">
+                
+                <!-- Cabecera de configuración -->
+                <div class="text-center mb-4">
+                    <i class="bi bi-gear-fill text-warning display-4"></i>
+                    <h2 class="text-warning mt-2 mb-1">Configuración</h2>
+                    <p class="text-secondary small">Personaliza tus preferencias en la aplicación</p>
+                </div>
+
+                <h:form>
+                    <!-- Notificaciones -->
+                    <div class="mb-4 form-check form-switch d-flex justify-content-between align-items-center bg-secondary bg-opacity-10 p-3 rounded border border-secondary">
+                        <label class="form-check-label text-light fw-bold" for="notifCheck">
+                            <i class="bi bi-bell me-2 text-warning"></i> Recibir notificaciones de batallas
+                        </label>
+                        <h:selectBooleanCheckbox class="form-check-input" id="notifCheck" value="true" />
+                    </div>
+
+                    <!-- Tema Oscuro -->
+                    <div class="mb-4 form-check form-switch d-flex justify-content-between align-items-center bg-secondary bg-opacity-10 p-3 rounded border border-secondary">
+                        <label class="form-check-label text-light fw-bold" for="darkModeCheck">
+                            <i class="bi bi-moon-stars me-2 text-warning"></i> Modo Cartógrafo (Contraste alto)
+                        </label>
+                        <h:selectBooleanCheckbox class="form-check-input" id="darkModeCheck" value="true" />
+                    </div>
+
+                    <!-- Selector de Idioma -->
+                    <div class="mb-4">
+                        <label class="form-label text-warning fw-bold"><i class="bi bi-globe me-2"></i> Idioma predeterminado</label>
+                        <h:selectOneMenu styleClass="form-select bg-dark text-white border-secondary fw-bold">
+                            <f:selectItem itemValue="es" itemLabel="Español (Moderno)" />
+                            <f:selectItem itemValue="en" itemLabel="English" />
+                            <f:selectItem itemValue="la" itemLabel="Latina (Clásico)" />
+                        </h:selectOneMenu>
+                    </div>
+
+                    <!-- Botón de guardar -->
+                    <h:commandButton value="Guardar Preferencias" 
+                        styleClass="w-100 py-2 fw-bold rounded btn-custom-warning" 
+                        action="#{configuracionBean.guardarPreferencias}">
+                    <f:ajax execute="@form" render=":mensajes" />
+                    </h:commandButton>
+                </h:form>
+
             </div>
         </main>
     </ui:define>

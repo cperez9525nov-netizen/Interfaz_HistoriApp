@@ -164,3 +164,21 @@
     color: #6c757d !important;    /* Color de las flechas separadoras */
     font-size: 0.75rem !important;
 }
+
+/* Botón del perfil y configuración */
+.btn-custom-warning {
+    background-color: transparent !important;
+    color: #ffc107 !important;
+    border: 2px solid #ffc107 !important;
+    transition: all 0.3s ease;
+    box-shadow: none !important;
+}
+
+.btn-custom-warning:hover, 
+.btn-custom-warning:focus, 
+.btn-custom-warning:active {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+    border: 2px solid #ffc107 !important;
+    box-shadow: none !important;
+}
